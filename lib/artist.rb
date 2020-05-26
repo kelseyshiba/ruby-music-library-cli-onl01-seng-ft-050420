@@ -29,20 +29,15 @@ class Artist
   end
 
   def songs
-    @songs
+    Song.all.find_all {|song| song.artist == self}
   end
   
   def add_song(song) #drake.add_song(INSTANCE OF A SONG NOT A STRING)
-    if song.artist == nil
-        song.artist = self
-        @songs << song unless songs.include?(song)
-    else
-      @songs << song unless songs.include?(song)
-    end
+    song.artist = self
   end
   
   def genres #returns array of all Genre instances
-    #songs.map {|song| song.genre}
+    #songs.map {|song| song.genre}.uniq
     songs.map(&:genre).uniq
   end
 

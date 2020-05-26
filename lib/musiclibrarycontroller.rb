@@ -78,4 +78,15 @@ class MusicLibraryController
       end
     end
 
+    # @path = gets.strip
+    # gets.strip until gets.strip == 'exit'
+    
+    def list_songs
+     sorted = Song.all.sort {|song1, song2| song1.name <=> song2.name}
+       sorted.each_with_index {|o, i| puts "#{i + 1}. #{o.artist.name} - #{o.name} - #{o.genre.name}"}
+    end
+    
+  
+  
+
 end
